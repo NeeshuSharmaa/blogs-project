@@ -1,0 +1,22 @@
+{   
+    "blogs": [
+    {
+      "title": "The Existential Crisis",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....",
+      "publishedDate": "October 13, 2014",
+      "id": "1"
+    },
+    {
+      "title": "The Paradigm of Decisions",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....",
+      "publishedDate": "December 13, 2014",
+      "id": "2"
+    },
+    {
+      "title": "Sloth ready to Grind",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....",
+      "publishedDate": "January 13, 2014",
+      "id": "3"
+    }
+  ]
+}
