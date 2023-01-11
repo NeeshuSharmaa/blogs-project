@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header>
@@ -5,9 +7,15 @@ export default function Header() {
       <img className="header-img" src="images/header-img.jpg" />
       <nav>
         <ul>
-          <li className="nav-list">Home</li>
-          <li className="nav-list">About the Author</li>
-          <li className="nav-list">Contact</li>
+          <Link to="/">
+            <li className="nav-list">Home</li>
+          </Link>
+          <Link to="/about">
+            <li className="nav-list">About the Author</li>
+          </Link>
+          <Link to="/contact">
+            <li className="nav-list">Contact</li>
+          </Link>
         </ul>
       </nav>
     </header>

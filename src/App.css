@@ -42,13 +42,18 @@ header>nav>ul{
     display:flex;
     flex-direction:row;
     background-color: black;
-    color:white;
+    justify-content:space-between;
     padding:20px;
 }
-header>nav>ul>li{
+.nav-list{
     margin:auto;
     font-size:1.2rem;
-    
+    color: white;
+}
+a:-webkit-any-link {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
 }
 .nav-list:hover{
     color:#8ea6b8;
