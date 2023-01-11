@@ -17,7 +17,7 @@ export default function Search({ blogList, setBlogs }) {
     "Nov",
     "Dec",
   ];
-  console.log("page rendered");
+
   // function inputHandler(e) {
   //   setSearch(e.target.value);
   //   console.log(search);
