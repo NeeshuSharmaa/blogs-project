@@ -149,6 +149,25 @@ a:-webkit-any-link {
 .blog-details{
     margin:220px 30px 20px 30px;
 }
+.blog-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.delete-btn{
+    background: black;
+        color: #fff;
+        border: 0;
+        padding: 8px 30px;
+        border-radius: 4px;
+        cursor: pointer;
+        align-items: center;
+        margin: 2rem 0 ;
+        box-shadow: 1.5px 1.5px 5px#838383;
+        
+        width:max-content;
+
+}
 .add-blog{
     text-align:center;
 }
