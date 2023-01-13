@@ -1,40 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100&family=Ultra&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100&family=Ultra&display=swap'); */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Lato:wght@100;300;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,200;1,300;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300&display=swap');
 *{
-    margin:0;
-    font-family: 'Poppins', sans-serif;
+    
+    font-family: 'Source Sans Pro', sans-serif;
 
 }
+
 header{
     max-height: max-content;
 }
 
 header>h1{
+    font-family:'Montserrat', sans-serif;
     text-align:center;
-    font-size:4rem;
+    font-size:300%;
     font-weight:500;
     width:100%;
     /* background-color:#000000; */
-    color:#37515f;
+    color:white;
     position:fixed;
     top:0;
+    left:0;
     /* z-index:5; */
-    background-color:rgb(234, 234, 234);
-    padding:1rem;
+    background-color:#37515f;
+    padding: 1.6rem 0 1.6rem 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
     
 
 }
-.header-img {
+/* .header-img {
     margin-top:180px;
     height: 50%;
     max-width: 100%;
-}
+} */
 header>nav{
     width:100%;
     box-shadow: 0 1px 5px rgb(86, 86, 86);
     position:fixed;
-    top:128px;
+    top:108px;
+    left:0;
 }
 header>nav>ul{
     list-style-type: none;
@@ -43,11 +49,15 @@ header>nav>ul{
     flex-direction:row;
     background-color: black;
     justify-content:space-between;
-    padding:20px;
+    padding:20px 30px;
+    
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 .nav-list{
+    font-family: 'Montserrat', sans-serif;
     margin:auto;
-    font-size:1.2rem;
+    font-size:1rem;
     color: white;
 }
 a:-webkit-any-link {
@@ -55,17 +65,19 @@ a:-webkit-any-link {
     cursor: pointer;
     text-decoration: none;
 }
+
 .nav-list:hover{
     color:#8ea6b8;
     cursor: pointer;
 }
 .search{
+    
     display:flex;
     flex-direction:row;
-    padding:2rem;
+    padding:1rem;
     justify-content:center;
     flex-wrap: nowrap;
-    margin:2% 20%;
+    margin:200px 20% 10px 20%;
 }
 .search>input{
     
@@ -81,11 +93,11 @@ a:-webkit-any-link {
 .search-btn{
     color:white;
     background-color:black;
-    padding: 0 2rem;
+    padding: 0 auto;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     border-width: 0;
-    width:30%;
+    width:40%;
     font-size:1rem;
 
 }
@@ -105,19 +117,18 @@ a:-webkit-any-link {
     padding:1rem 1.5rem;
     color:black;
     margin:2rem;
-    box-shadow: 3px 3px 5px #5a6164;
+    box-shadow: 3px 3px 5px #e3e4e5;
     border-radius:0.5rem;
-    background-color:rgb(248, 247, 247);
+    background-color:rgb(248, 246, 246);
 }
-.blog>div{
-    display:flex;
-    flex-direction: row;
-    justify-content:space-between;
-    margin: 1rem 0;
-}
+
 .blog-title{
+    margin: 1rem 0;
     font-size:1.5rem;
     color:#37515f;
+}
+.blog>p{
+    margin-top:1rem;
 }
 
 .blog-delete-btn{
@@ -135,4 +146,58 @@ a:-webkit-any-link {
     transition-timing-function: linear;
     cursor: pointer;
 }
+.blog-details{
+    margin:220px 30px 20px 30px;
+}
+.add-blog{
+    text-align:center;
+}
+.add-blog h2{
+    margin-top:13rem;
+    text-align:center;
+    color:#37515f;
+   
 
+}
+.blog-form label{
+    text-align:left;
+    font-weight:600;
+}
+.blog-form{
+    margin:2rem auto 0 auto;
+    
+    justify-content:center;
+    display:flex;
+    flex-direction: column;
+    max-width:70%;
+
+}
+.blog-form input,
+.blog-form textarea
+{
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid rgb(179, 178, 178);
+    box-sizing: border-box;
+    display: block;
+    border-radius: 4px;
+}
+.blog-form button{
+    background:black;
+        color: #fff;
+        border: 0;
+        padding: 8px 30px;
+        border-radius: 4px;
+        cursor: pointer;
+        align-items: center;
+        margin:2rem auto;
+        box-shadow: 1.5px 1.5px 5px#838383
+        
+
+}
+.blog-form button:hover {
+    background-color: #37515f;
+    cursor: pointer;
+    transition-delay: 0.2s;
+}

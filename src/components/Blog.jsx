@@ -1,23 +1,17 @@
-import Blogs from "./Blogs";
+import { Link } from "react-router-dom";
 
-const Blog = ({ blog, deleteHandler }) => {
+const Blog = ({ blog }) => {
   return (
     <div className="blog">
-      <div>
-        <span className="blog-title">{blog.title}</span>
-        <button
-          className="blog-delete-btn"
-          onClick={() => {
-            deleteHandler(blog.id);
-          }}
-        >
-          Delete
-        </button>
-      </div>
+      <Link to={`/blogs/${blog.id}`}>
+        <div>
+          <span className="blog-title">{blog.title}</span>
+        </div>
 
-      <p className="blog-preview">{blog.body}</p>
-      <br />
-      <small className="published-date">{blog.publishedDate}</small>
+        <p className="blog-preview">{blog.body}</p>
+        <br />
+        <small className="published-date">{blog.publishedDate}</small>
+      </Link>
     </div>
   );
 };
