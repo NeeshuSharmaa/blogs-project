@@ -1,9 +1,11 @@
 import { useState } from "react";
-import useFetch from "../useFetch";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();
 
   const months = [
     "Jan",
@@ -22,19 +24,24 @@ const Create = () => {
 
   function submitHandler(event) {
     event.preventDefault();
+    setIsPending(true);
     var month = months[new Date().getMonth()];
     var year = new Date().getFullYear();
     var date = new Date().getDate();
     var publishedDate = `${month} ${date}, ${year}`;
     const newBlog = { title: title, body: body, publishedDate: publishedDate };
-    console.log(newBlog);
+
     fetch("http://localhost:8000/blogs", {
       method: "POST",
-      headers: { "Content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newBlog),
     })
       .then((res) => res.json())
-      .then(() => console.log(newBlog));
+      .then(() => {
+        console.log("new blog added", newBlog);
+        setIsPending(false);
+      });
+    navigate("/");
   }
 
   return (
@@ -57,7 +64,16 @@ const Create = () => {
           onChange={(e) => setBody(e.target.value)}
           required
         ></textarea>
-        <button>Submit</button>
+        {isPending === true ? (
+          <button
+            style={{ backgroundColor: "rgb(179, 178, 178)", color: "#000000" }}
+            disabled
+          >
+            Adding Blog...
+          </button>
+        ) : (
+          <button>Submit</button>
+        )}
       </form>
     </div>
   );
