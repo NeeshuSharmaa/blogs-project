@@ -9,7 +9,7 @@ const Blog = ({ blog }) => {
         </div>
 
         <p className="blog-preview">{blog.body}</p>
-        <br />
+
         <small className="published-date">{blog.publishedDate}</small>
       </Link>
     </div>
