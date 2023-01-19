@@ -6,7 +6,7 @@
     font-family: 'Source Sans Pro', sans-serif;
 
 }
-
+body{margin:0}
 header{
     max-height: max-content;
 }
@@ -30,46 +30,75 @@ header>h1{
     
 
 }
-/* .header-img {
-    margin-top:180px;
+.header-img {
+    margin-top:130px;
     height: 50%;
     max-width: 100%;
-} */
+    margin-left:0;
+    margin-right:0;
+}
+
 header>nav{
     width:100%;
     box-shadow: 0 1px 5px rgb(86, 86, 86);
     position:fixed;
     top:108px;
     left:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    
 }
 header>nav>ul{
     list-style-type: none;
     padding-inline-start: 0;
     display:flex;
-    flex-direction:row;
-    background-color: black;
-    justify-content:space-between;
-    padding:20px 30px;
+    justify-content: left;
     
+    padding: 10px 30px;
     margin-block-start: 0;
     margin-block-end: 0;
+}
+header>nav>div{
+    padding: 10px 30px;
+    
+    display:inline-flex;
+    text-align:right;
+
 }
 .nav-list{
     font-family: 'Montserrat', sans-serif;
     margin:auto;
-    font-size:1rem;
+    font-size:0.9rem;
     color: white;
+    padding: 0.5rem 1rem;
+    
 }
 a:-webkit-any-link {
     color: inherit;
     cursor: pointer;
     text-decoration: none;
 }
+.logout-btn {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e3e4e5;
+    color: black;
+    border-radius: 5.5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}
 
 .nav-list:hover{
     color:#8ea6b8;
     cursor: pointer;
 }
+.logout-btn:hover{
+    color:white;
+    cursor: pointer;
+    background-color: #8ea6b8;
+}
+    
 .search{
     
     display:flex;
@@ -77,7 +106,7 @@ a:-webkit-any-link {
     padding:1rem;
     justify-content:center;
     flex-wrap: nowrap;
-    margin:200px 20% 10px 20%;
+    margin:26px 20% 10px 20%;
 }
 .search>input{
     
@@ -90,6 +119,8 @@ a:-webkit-any-link {
     width:80%;
     
 }
+
+
 .search-btn{
     color:white;
     background-color:black;
@@ -113,13 +144,13 @@ a:-webkit-any-link {
     justify-content: space-between;
     padding: 0 5%;
 }
-.blog{
-    padding:1rem 1.5rem;
-    color:black;
-    margin:2rem;
-    box-shadow: 3px 3px 5px #e3e4e5;
-    border-radius:0.5rem;
-    background-color:rgb(248, 246, 246);
+.blog {
+    padding: 1rem 1.5rem;
+    color: black;
+    margin: 2rem 1rem;
+    box-shadow: 3px 3px 5px #9a9a9b;
+    border-radius: 0.5rem;
+    background-color: rgb(236, 235, 235);
 }
 
 .blog-title{
@@ -129,6 +160,9 @@ a:-webkit-any-link {
 }
 .blog>p{
     margin-top:1rem;
+}
+.published-date{
+    color:rgb(67, 67, 67);
 }
 
 .blog-delete-btn{

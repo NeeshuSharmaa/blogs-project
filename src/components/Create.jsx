@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Create = () => {
+const Create = ({ setImageDisplay }) => {
+  useEffect(() => {
+    setImageDisplay(false);
+  }, []);
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isPending, setIsPending] = useState(false);
@@ -41,7 +45,7 @@ const Create = () => {
         console.log("new blog added", newBlog);
         setIsPending(false);
       });
-    navigate("/");
+    navigate("/home");
   }
 
   return (

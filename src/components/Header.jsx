@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ setLoggedIn, imageDisplay }) {
   return (
     <header>
-      <h1>The Weirdo Blogs</h1>
-      {/* <img className="header-img" src="images/header-img.jpg" /> */}
+      <h1>Intros-Blog World</h1>
+      {imageDisplay ? (
+        <img className="header-img" src="images/header-img.jpg" />
+      ) : (
+        "null"
+      )}
       <nav>
-        <ul>
-          <Link to="/">
+        <ul className="nav-div">
+          <Link to="/home">
             <li className="nav-list">Home</li>
           </Link>
           <Link to="/about">
@@ -17,6 +21,13 @@ export default function Header() {
             <li className="nav-list">Add Blog</li>
           </Link>
         </ul>
+        <div>
+          <Link to="/">
+            <button className="logout-btn" onClick={() => setLoggedIn(false)}>
+              Logout
+            </button>
+          </Link>
+        </div>
       </nav>
     </header>
   );

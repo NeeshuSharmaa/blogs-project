@@ -1,8 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../useFetch";
-import { useState } from "react";
+import { useEffect } from "react";
 
-const BlogDetails = () => {
+const BlogDetails = ({ setImageDisplay }) => {
+  useEffect(() => {
+    setImageDisplay(false);
+  }, []);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -18,7 +21,7 @@ const BlogDetails = () => {
     fetch("http://localhost:8000/blogs/" + blog.id, {
       method: "DELETE",
     }).then((res) => console.log(`blog with id: ${blog.id} got deleted`));
-    navigate("/");
+    navigate("/home");
   }
   return (
     <div className="blog-details">
