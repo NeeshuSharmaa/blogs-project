@@ -1,7 +1,8 @@
+import { addDoc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Create = ({ setImageDisplay }) => {
+const Create = ({ setImageDisplay, colRef, blogs, setBlogs }) => {
   useEffect(() => {
     setImageDisplay(false);
   }, []);
@@ -33,18 +34,23 @@ const Create = ({ setImageDisplay }) => {
     var year = new Date().getFullYear();
     var date = new Date().getDate();
     var publishedDate = `${month} ${date}, ${year}`;
-    const newBlog = { title: title, body: body, publishedDate: publishedDate };
 
-    fetch("http://localhost:8000/blogs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newBlog),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        console.log("new blog added", newBlog);
-        setIsPending(false);
-      });
+    addDoc(colRef, { title: title, body: body, publishedDate: publishedDate })
+      .then((doc) => {
+        setBlogs([...blogs, { ...doc, id: doc.id }]);
+        console.log("blog added to collection");
+      })
+      .catch((err) => console.log(err.message));
+    // fetch("http://localhost:8000/blogs", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(newBlog),
+    // })
+    //   .then((res) => res.json())
+    //   .then(() => {
+    //     console.log("new blog added", newBlog);
+    //     setIsPending(false);
+    //   });
     navigate("/home");
   }
 

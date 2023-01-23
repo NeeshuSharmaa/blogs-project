@@ -80,11 +80,11 @@ export default function LoginPage({ setLoggedIn }) {
           />
         </div>
 
-        <button className="sign-in-btn" onClick={signUpHandler}>
-          Sign Up
-        </button>
         <button className="login-btn" onClick={loginHandler}>
           Login
+        </button>
+        <button className="sign-in-btn" onClick={signUpHandler}>
+          Sign Up
         </button>
       </form>
       {error && (

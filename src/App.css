@@ -295,7 +295,7 @@ a:-webkit-any-link {
     border-radius: 4px;
     cursor: pointer;
     align-items: center;
-    margin: 1rem auto;
+    margin: 0 auto;
     box-shadow: 1.5px 1.5px 5px#b1b0b0
 }
 .login-btn {
@@ -306,6 +306,6 @@ a:-webkit-any-link {
     border-radius: 4px;
     cursor: pointer;
     align-items: center;
-    margin: 0 auto 2rem auto;
+    margin: 1rem auto;
     box-shadow: 1.5px 1.5px 5px#d5d4d4
 }
