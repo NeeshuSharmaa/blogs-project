@@ -16,6 +16,9 @@ import LoginPage from "./components/LoginPage";
 import { getFirestore, collection } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
+import PrivateRoute from "./routes/PrivateRoute";
+import { createContext } from "react";
+export const userContext = createContext();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -45,70 +48,11 @@ function App() {
 
   return (
     <div className="App">
-      {loggedIn ? (
-        <Header setLoggedIn={setLoggedIn} imageDisplay={imageDisplay} />
-      ) : null}
-      <Routes>
-        {!loggedIn ? (
-          <Route
-            path="/"
-            element={<LoginPage setLoggedIn={setLoggedIn} />}
-          ></Route>
-        ) : (
-          <>
-            (
-            <Route
-              exact
-              path="/home"
-              element={
-                <Home
-                  setImageDisplay={setImageDisplay}
-                  blogs={blogs}
-                  setBlogs={setBlogs}
-                  db={db}
-                  colRef={colRef}
-                  error={error}
-                  setError={setError}
-                  ispending={isPending}
-                  setIsPending={setIsPending}
-                  setSpecificBlog={setSpecificBlog}
-                />
-              }
-            ></Route>
-            <Route
-              path="/create"
-              element={
-                <Create
-                  setImageDisplay={setImageDisplay}
-                  blogs={blogs}
-                  setBlogs={setBlogs}
-                  colRef={colRef}
-                />
-              }
-            ></Route>
-            <Route
-              path="/about"
-              element={<About setImageDisplay={setImageDisplay} />}
-            ></Route>
-            <Route
-              path={`/blogs/:id`}
-              element={
-                <BlogDetails
-                  setImageDisplay={setImageDisplay}
-                  blogs={blogs}
-                  db={db}
-                  specificBlog={specificBlog}
-                />
-              }
-            ></Route>
-            )
-          </>
-        )}
-      </Routes>
       <userContext.Provider value={loggedIn}>
         {loggedIn ? (
-          <Header setLogged In={setLoggedIn} imageDisplay={imageDisplay} />
+          <Header setLoggedIn={setLoggedIn} imageDisplay={imageDisplay} />
         ) : null}
+
         <Routes>
           <Route
             exact
