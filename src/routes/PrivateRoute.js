@@ -3,14 +3,8 @@ import { useContext } from "react";
 import { Route, Navigate } from "react-router-dom";
 import { userContext } from "../App";
 
-export default function PrivateRoute({ component: Component, ...rest }) {
+export default function PrivateRoute({ component: Component }) {
   const loggedIn = useContext(userContext);
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        return loggedIn ? <Component {...props} /> : <Navigate to="/" />;
-      }}
-    ></Route>
-  );
+  console.log(`inside private route loggedIn=${loggedIn}`);
+  return loggedIn ? Component : <Navigate to="/" />;
 }

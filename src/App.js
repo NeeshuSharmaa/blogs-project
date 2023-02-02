@@ -13,12 +13,9 @@ import BlogDetails from "./components/BlogDetails";
 import Create from "./components/Create";
 import Home from "./components/Home";
 import LoginPage from "./components/LoginPage";
-import PrivateRoute from "./routes/PrivateRoute";
 import { getFirestore, collection } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
-import { createContext } from "react";
-export const userContext = createContext();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -48,57 +45,137 @@ function App() {
 
   return (
     <div className="App">
-      {/* <userContext.Provider value={loggedIn}> */}
       {loggedIn ? (
-        <Header setLogged In={setLoggedIn} imageDisplay={imageDisplay} />
+        <Header setLoggedIn={setLoggedIn} imageDisplay={imageDisplay} />
       ) : null}
       <Routes>
-        <Route path="/" component={<LoginPage setLoggedIn={setLoggedIn} />} />
-        <PrivateRoute
-          path="/home"
-          component={
-            <Home
-              setImageDisplay={setImageDisplay}
-              blogs={blogs}
-              setBlogs={setBlogs}
-              db={db}
-              colRef={colRef}
-              error={error}
-              setError={setError}
-              ispending={isPending}
-              setIsPending={setIsPending}
-              setSpecificBlog={setSpecificBlog}
-            />
-          }
-        />
-        <PrivateRoute
-          path="/create"
-          element={
-            <Create
-              setImageDisplay={setImageDisplay}
-              blogs={blogs}
-              setBlogs={setBlogs}
-              colRef={colRef}
-            />
-          }
-        />
-        <PrivateRoute
-          path="/about"
-          element={<About setImageDisplay={setImageDisplay} />}
-        />
-        <PrivateRoute
-          path={`/blogs/:id`}
-          element={
-            <BlogDetails
-              setImageDisplay={setImageDisplay}
-              blogs={blogs}
-              db={db}
-              specificBlog={specificBlog}
-            />
-          }
-        />
+        {!loggedIn ? (
+          <Route
+            path="/"
+            element={<LoginPage setLoggedIn={setLoggedIn} />}
+          ></Route>
+        ) : (
+          <>
+            (
+            <Route
+              exact
+              path="/home"
+              element={
+                <Home
+                  setImageDisplay={setImageDisplay}
+                  blogs={blogs}
+                  setBlogs={setBlogs}
+                  db={db}
+                  colRef={colRef}
+                  error={error}
+                  setError={setError}
+                  ispending={isPending}
+                  setIsPending={setIsPending}
+                  setSpecificBlog={setSpecificBlog}
+                />
+              }
+            ></Route>
+            <Route
+              path="/create"
+              element={
+                <Create
+                  setImageDisplay={setImageDisplay}
+                  blogs={blogs}
+                  setBlogs={setBlogs}
+                  colRef={colRef}
+                />
+              }
+            ></Route>
+            <Route
+              path="/about"
+              element={<About setImageDisplay={setImageDisplay} />}
+            ></Route>
+            <Route
+              path={`/blogs/:id`}
+              element={
+                <BlogDetails
+                  setImageDisplay={setImageDisplay}
+                  blogs={blogs}
+                  db={db}
+                  specificBlog={specificBlog}
+                />
+              }
+            ></Route>
+            )
+          </>
+        )}
       </Routes>
-      {/* </userContext.Provider> */}
+      <userContext.Provider value={loggedIn}>
+        {loggedIn ? (
+          <Header setLogged In={setLoggedIn} imageDisplay={imageDisplay} />
+        ) : null}
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<LoginPage setLoggedIn={setLoggedIn} />}
+          />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute
+                component={
+                  <Home
+                    setImageDisplay={setImageDisplay}
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    db={db}
+                    colRef={colRef}
+                    error={error}
+                    setError={setError}
+                    ispending={isPending}
+                    setIsPending={setIsPending}
+                    setSpecificBlog={setSpecificBlog}
+                  />
+                }
+              />
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <PrivateRoute
+                component={
+                  <Create
+                    setImageDisplay={setImageDisplay}
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    colRef={colRef}
+                  />
+                }
+              />
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <PrivateRoute
+                component={<About setImageDisplay={setImageDisplay} />}
+              />
+            }
+          />
+          <Route
+            path={`/blogs/:id`}
+            element={
+              <PrivateRoute
+                component={
+                  <BlogDetails
+                    setImageDisplay={setImageDisplay}
+                    blogs={blogs}
+                    db={db}
+                    specificBlog={specificBlog}
+                  />
+                }
+              />
+            }
+          />
+        </Routes>
+      </userContext.Provider>
     </div>
   );
 }
