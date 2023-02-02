@@ -105,6 +105,77 @@ function App() {
           </>
         )}
       </Routes>
+      <userContext.Provider value={loggedIn}>
+        {loggedIn ? (
+          <Header setLogged In={setLoggedIn} imageDisplay={imageDisplay} />
+        ) : null}
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<LoginPage setLoggedIn={setLoggedIn} />}
+          />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute
+                component={
+                  <Home
+                    setImageDisplay={setImageDisplay}
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    db={db}
+                    colRef={colRef}
+                    error={error}
+                    setError={setError}
+                    ispending={isPending}
+                    setIsPending={setIsPending}
+                    setSpecificBlog={setSpecificBlog}
+                  />
+                }
+              />
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <PrivateRoute
+                component={
+                  <Create
+                    setImageDisplay={setImageDisplay}
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    colRef={colRef}
+                  />
+                }
+              />
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <PrivateRoute
+                component={<About setImageDisplay={setImageDisplay} />}
+              />
+            }
+          />
+          <Route
+            path={`/blogs/:id`}
+            element={
+              <PrivateRoute
+                component={
+                  <BlogDetails
+                    setImageDisplay={setImageDisplay}
+                    blogs={blogs}
+                    db={db}
+                    specificBlog={specificBlog}
+                  />
+                }
+              />
+            }
+          />
+        </Routes>
+      </userContext.Provider>
     </div>
   );
 }
